@@ -21,9 +21,7 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public void deletePosts(int id) throws SQLException {
-		ps = DBConnection.getConnection().conn.prepareStatement("delete from users where usreid = ?");
-		ps.setInt(1, id);
-		ps.executeUpdate();
+		
 	}
 
 	@Override
@@ -34,16 +32,8 @@ public class PostServiceImpl implements PostService {
 
 	@Override
 	public Posts findPosts(int id) throws SQLException {
-		ps = DBConnection.getConnection().conn.prepareStatement("select * from posts where postid = ?");
-		ps.setInt(1, id);
-		ResultSet rs = ps.executeQuery();
-		Posts post = null;
-		if (rs.next()) {
-			System.out.println("Post found");
-			post = new Posts(rs.getInt(1), rs.getInt(2), rs.getString(3), rs.getString(4),
-					DateToLocalDateUtil.getLocalDate(rs.getDate(5)), DateToLocalDateUtil.getLocalDate(rs.getDate(6)));
-		}
-		return post;
+		return null;
+		
 	}
 
 }

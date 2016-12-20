@@ -9,14 +9,18 @@ public class Users {
 	private String state;
 	private String city;
 	private String street;
-	private String zipcode;
+	private int zipcode;
 	private int birthyear;
 
-	public Users(int int1, String string, String string2, String string3, String string4, String string5,
-			String string6, LocalDate localDate, String string7, String string8, LocalDate localDate2,
-			LocalDate localDate3) {
+	public Users() {
 		// TODO Auto-generated constructor stub
 	}
+
+//	public Users(int int1, String string, String string2, String string3, String string4, String string5,
+//			String string6, LocalDate localDate, String string7, String string8, LocalDate localDate2,
+//			LocalDate localDate3) {
+//		// TODO Auto-generated constructor stub
+//	}
 
 	public int getUserid() {
 		return userid;
@@ -38,8 +42,8 @@ public class Users {
 		return gender;
 	}
 
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setGender(String gender2) {
+		this.gender = gender2;
 	}
 
 	public String getState() {
@@ -66,12 +70,12 @@ public class Users {
 		this.street = street;
 	}
 
-	public String getZipcode() {
+	public int getZipcode() {
 		return zipcode;
 	}
 
-	public void setZipcode(String zipcode) {
-		this.zipcode = zipcode;
+	public void setZipcode(int zip) {
+		this.zipcode = zip;
 	}
 
 	public int getBirthyear() {

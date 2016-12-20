@@ -68,17 +68,14 @@
 				<h1>Sign Up</h1>
 				<form method="POST" action="SignUpController">
 					<div class="small_input left">
-						<input type="text" placeholder="First name" required>
+						<input type="text" name="fullname" placeholder="Full name" required>
 					</div>
-					<div class="small_input right">
-						<input type="text" placeholder="Last name" required>
-					</div>
-					<br class="clear"> <input type="email" placeholder="Email"
-						required> <input type="text" placeholder="Password"
+					<br class="clear"> <input type="email" name="email" placeholder="Email"
+						required> <input type="text" name="password" placeholder="Password"
 						pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
 						title="should be at least 6 letters and have at least one capital letter, one small letter,
 one number "
-						required> <br /> <select class="form-control selectItem"
+						required> <br /> <select name="gender" class="form-control selectItem"
 						id="selectGender">
 						<option>Gender</option>
 						<option>Male</option>
@@ -86,7 +83,7 @@ one number "
 
 					</select>
 					<div class="small_input left">
-						<select class="form-control selectItem" id="selectState">
+						<select class="form-control selectItem" name="state" id="selectState">
 
 							<option value="">State</option>
 							<option value="AL">Alabama</option>
@@ -143,18 +140,18 @@ one number "
 						</select>
 					</div>
 					<div class="small_input right">
-						<input type="text" placeholder="City" required>
+						<input type="text" name="city" placeholder="City" required>
 					</div>
-					<br class="clear"> <input type="text" placeholder="Street"
+					<br class="clear"> <input name="street" type="text" placeholder="Street"
 						required>
 
 					<div class="small_input left">
-						<input type="text" placeholder="Zip Code" required>
+						<input type="text" name="zip" placeholder="Zip Code" required>
 					</div>
 					<div class="small_input right">
 
 
-						<select class="form-control selectItem">
+						<select name="birthyear" class="form-control selectItem">
 							<option value="">Birth Year</option>
 							<option value="2016">2016</option>
 							<option value="2015">2015</option>

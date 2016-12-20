@@ -1,96 +1,80 @@
 package edu.mum.project.serviceImpl;
 
+import java.security.MessageDigest;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+
+import com.mysql.jdbc.Connection;
 
 import edu.mum.project.dbConnection.DBConnection;
 import edu.mum.project.dbConnection.DateToLocalDateUtil;
 import edu.mum.project.model.Users;
 import edu.mum.project.service.UserService;
 
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl{
 
-	PreparedStatement ps;
-
-	@Override
-	public void deleteUser(int id) throws SQLException {
-		ps = DBConnection.getConnection().conn.prepareStatement("delete from Users where userId = ?");
-		ps.setInt(1, id);
-		ps.executeUpdate();
-	}
-
-	@Override
-	public Users updateUser(Users user) throws SQLException {
-
-		Users oldUser = findUser(user.getUserid());
-		oldUser.setPassword(user.getPassword());
-		oldUser.setCity(user.getCity());
-		oldUser.setStreet(user.getStreet());
-		oldUser.setZipcode(user.getZipcode());
-		oldUser.setEmail(user.getEmail());
-		oldUser.setState(user.getState());
-
-		ps = DBConnection.getConnection().conn.prepareStatement(
-				"update Users set password=?, state=?, city=?, street=?, zipcode=?,email=?,dateupdated=? where userId=?");
-		ps.setString(1, user.getPassword());
-		ps.setString(2, user.getState());
-		ps.setString(3, user.getCity());
-		ps.setString(4, user.getStreet());
-		ps.setString(5, user.getZipcode());
-		ps.setString(6, user.getEmail());
-		ps.setDate(7, java.sql.Date.valueOf(LocalDate.now()));
-		ps.setInt(8, user.getUserid());
-
-		ps.executeUpdate();
-
-		// return updated info
-
-		return oldUser;
-
-	}
-
-	@Override
-	public Users findUser(int id) throws SQLException {
-		ps = DBConnection.getConnection().conn.prepareStatement("select * from Users where userId = ?");
-		ps.setInt(1, id);
-		ResultSet rs = ps.executeQuery();
-		Users user = null;
-		if (rs.next()) {
-			System.out.println("User found");
-			user = new Users(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
-					rs.getString(6), rs.getString(7), DateToLocalDateUtil.getLocalDate(rs.getDate(8)), rs.getString(9),
-					rs.getString(10), DateToLocalDateUtil.getLocalDate(rs.getDate(11)),
-					DateToLocalDateUtil.getLocalDate(rs.getDate(12)));
-		}
-		return user;
-	}
-
-	@Override
-	public Users addNewUser(Users user) {
-
+	public boolean insertUser(Users user) throws Exception {
+		String passwordmd = "";
 		try {
 
-			ps = DBConnection.getConnection().conn.prepareStatement(
-					"insert into Users (userId, fullname, gender, state, city, street, zipcode, birthyear, email, password, datecreated,dateupdated) values(?,?,?,?,?,?,?,?,?,?,?,?)");
-			ps.setInt(1, user.getUserid());
-			ps.setString(2, user.getFullname());
-			ps.setString(3, user.getGender());
-			ps.setString(4, user.getState());
-			ps.setString(5, user.getCity());
-			ps.setString(6, user.getStreet());
-			ps.setString(7, user.getZipcode());
-			ps.setInt(8, user.getBirthyear());
-			ps.setString(9, user.getEmail());
-			ps.setString(10, user.getPassword());
-			ps.setDate(11, java.sql.Date.valueOf(user.getDatecreated()));
-			ps.setDate(12, java.sql.Date.valueOf(user.getDateupdated()));
-			ps.execute();
-		} catch (Exception e) {
-			e.printStackTrace();
+			MessageDigest md = MessageDigest.getInstance("MD5");
+			md.update(user.getPassword().getBytes());
+			byte[] digest = md.digest();
+			StringBuffer sb = new StringBuffer();
+			for (byte b : digest) {
+				sb.append(String.format("%02x", b & 0xff));
+			}
+			passwordmd = sb.toString();
+			int m = 0;
+			if (user.getGender().equals("Male")) {
+				m = 1;
+			} else if (user.getGender() == ""){
+				m = 1;
+			} else {
+				m = 0;
+			}
+			
+			Connection con = (Connection) DBConnection.getConnection();
+			System.out.println("after");
+			String insert = "INSERT INTO users(fullname,gender,state,city,street,zipcode,birthyear,email,password) "
+					+ "values ('" + user.getFullname() + "'," + m + ",'" + user.getState() + "','" + user.getCity() + "','" + user.getStreet() + "'," + user.getZipcode() + ","
+					+ user.getBirthyear() + ",'" + user.getEmail() + "'," + "'" + passwordmd + "')";
+			PreparedStatement stat = (PreparedStatement) con.prepareStatement(insert);
+			stat.executeUpdate();
+			//System.out.println(passwordmd);
+			return true;
+		} catch (Exception ex) {
+			System.out.println(ex.toString());
+			return false;
 		}
-		return user;
+	}
+	
+	public boolean checkUserLogin(String email, String password) throws Exception {
+		String emailmd = "";
+		MessageDigest md = MessageDigest.getInstance("MD5");
+		md.update(password.getBytes());
+		byte[] digest = md.digest();
+		StringBuffer sb = new StringBuffer();
+		for (byte b : digest) {
+			sb.append(String.format("%02x", b & 0xff));
+		}
+		emailmd = sb.toString();
+		System.out.println(emailmd);
+		Connection con = (Connection) DBConnection.getConnection();
+		String query = "select email,password from users";
+		PreparedStatement stat = (PreparedStatement) con.prepareStatement(query);
+		ResultSet res = stat.executeQuery();
+		while (res.next()) {
+			String mail = res.getString("email").toString();
+			String pass = res.getString("password").toString();
+			if (email.equals(mail) && pass.equals(emailmd)) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 }
