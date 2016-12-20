@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import edu.mum.project.dbConnection.DBConnection;
 import edu.mum.project.dbConnection.DateToLocalDateUtil;
 import edu.mum.project.model.Posts;
-import edu.mum.project.model.Users;
 import edu.mum.project.service.PostService;
 
 public class PostServiceImpl implements PostService {
