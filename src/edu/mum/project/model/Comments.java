@@ -1,5 +1,6 @@
 package edu.mum.project.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Comments {
@@ -9,6 +10,12 @@ public class Comments {
 	private Posts posts;
 	private LocalDateTime datecreated;
 	private LocalDateTime dateupdated;
+
+	public Comments(int int1, String string, String string2, String string3, String string4, String string5,
+			String string6, LocalDate localDate, String string7, String string8, LocalDate localDate2,
+			LocalDate localDate3) {
+		// TODO Auto-generated constructor stub
+	}
 
 	public int getCommentid() {
 		return commentid;

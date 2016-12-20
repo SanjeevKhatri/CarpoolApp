@@ -1,5 +1,6 @@
 package edu.mum.project.model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Posts {
@@ -9,6 +10,10 @@ public class Posts {
 	private String posttype;
 	private LocalDateTime datecreated;
 	private LocalDateTime dateupdated;
+
+	public Posts(int int1, int int2, String string, String string2, LocalDate localDate, LocalDate localDate2) {
+		// TODO Auto-generated constructor stub
+	}
 
 	public int getPostid() {
 		return postid;

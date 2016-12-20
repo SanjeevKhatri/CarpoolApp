@@ -1,6 +1,6 @@
 package edu.mum.project.model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 public class Users {
 	private int userid;
@@ -11,6 +11,12 @@ public class Users {
 	private String street;
 	private String zipcode;
 	private int birthyear;
+
+	public Users(int int1, String string, String string2, String string3, String string4, String string5,
+			String string6, LocalDate localDate, String string7, String string8, LocalDate localDate2,
+			LocalDate localDate3) {
+		// TODO Auto-generated constructor stub
+	}
 
 	public int getUserid() {
 		return userid;
@@ -92,24 +98,24 @@ public class Users {
 		this.password = password;
 	}
 
-	public LocalDateTime getDatecreated() {
+	public LocalDate getDatecreated() {
 		return datecreated;
 	}
 
-	public void setDatecreated(LocalDateTime datecreated) {
+	public void setDatecreated(LocalDate datecreated) {
 		this.datecreated = datecreated;
 	}
 
-	public LocalDateTime getDateupdated() {
+	public LocalDate getDateupdated() {
 		return dateupdated;
 	}
 
-	public void setDateupdated(LocalDateTime dateupdated) {
+	public void setDateupdated(LocalDate dateupdated) {
 		this.dateupdated = dateupdated;
 	}
 
 	private String email;
 	private String password;
-	private LocalDateTime datecreated;
-	private LocalDateTime dateupdated;
+	private LocalDate datecreated;
+	private LocalDate dateupdated;
 }
