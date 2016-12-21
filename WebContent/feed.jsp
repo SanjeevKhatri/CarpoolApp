@@ -49,21 +49,26 @@
 			</button>
 
 			<a class="navbar-brand" href="index.html"> <img
-				src="view/images/logo.png" alt="logo"> <span>MUM Carpool</span>
+				src="view/images/logo.png" alt="logo"> <span>MUM
+					Carpool</span>
 			</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="inner-top-link pull-right">
-			<li><a href="#">Weather Map <i class="fa fa-sun-o" aria-hidden="true"></i></a></li>
-				<li><a href="#" class="notification">Notification <i class="fa fa-bell"></i></a></li>
+				<li><a href="#">Weather Map <i class="fa fa-sun-o"
+						aria-hidden="true"></i></a></li>
+				<li><a href="#" class="notification">Notification <i
+						class="fa fa-bell"></i></a></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">Account <span class="caret"></span></a>
 
 					<ul class="dropdown-menu">
-						<li><a href="#">Welcome, <br><i class="fa fa-user fa-fw"></i><%=session.getAttribute("yourName")%></a></li>
-						<li><a href="#"><i class="fa fa-pencil fa-fw"></i>Edit Profile</a></li>
+						<li><a href="#">Welcome, <br>
+							<i class="fa fa-user fa-fw"></i><%=session.getAttribute("yourName")%></a></li>
+						<li><a href="#"><i class="fa fa-pencil fa-fw"></i>Edit
+								Profile</a></li>
 						<li class="divider"></li>
 						<li><a href="LogoutController"><i class="fa fa-unlock"></i>Logout</a></li>
 					</ul></li>
@@ -93,80 +98,81 @@
 					<li class="active"><a id="offering" data-toggle="tab">Ride
 							Offers</a></li>
 					<li><a data-toggle="tab" id="asking">Asking Ride</a></li>
-
-
-					<button type="button" class="btn btn-info btn-lg right"
-						data-toggle="modal" data-target="#myModal">Add New Post</button>
-					<div class="clear_right"></div>
-					<!-- Modal -->
-					<div id="myModal" class="modal fade" role="dialog">
-						<div class="modal-dialog">
-
-							<!-- Modal content-->
-							<div class="modal-content">
-								<form action="PostController" method="POST">
-									<div class="modal-header">
-
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-										<h4 class="modal-title">Add New Post</h4>
-									</div>
-									<div class="modal-body mod-body">
-
-										<div class="form-group">
-											<div class="col-md-12">
-												<label class="radio-inline"> <input name="posttype"
-													type="radio" name="optradio" value="offering">offering
-												</label> <label class="radio-inline"> <input name="posttype"
-													type="radio" value="asking" name="optradio">asking
-												</label>
-											</div>
-										</div>
-
-										<div class="form-group">
-											<div class='col-md-11 input-group date'>
-												<input type='text' name="date" class="form-control"
-													id="datepicker" /> <span class="input-group-addon">
-													<span class="glyphicon glyphicon-calendar"></span>
-												</span>
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="col-md-6">
-												<label for="ex1">From</label> <input name="from"
-													class="form-control" id="ex1" type="text">
-											</div>
-
-
-											<div class="col-md-6">
-												<label for="ex2">To</label> <input name="to"
-													class="form-control" id="ex2" type="text">
-											</div>
-										</div>
-
-										<div class="form-group">
-											<div class="col-md-12">
-												<label for="comment">Description:</label>
-												<textarea name="description" class="form-control" rows="5"
-													id="comment"></textarea>
-											</div>
-										</div>
-
-									</div>
-
-
-									<div class="modal-footer">
-										<!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-										<button type="submit" class="btn btn-success">Success</button>
-									</div>
-								</form>
-							</div>
-
-						</div>
-					</div>
-
-					<!-- Modal end -->
 				</ul>
-				
+
+
+				<button type="button" class="btn btn-info btn-lg right"
+					data-toggle="modal" data-target="#myModal">Add New Post</button>
+				<div class="clear_right"></div>
+				<!-- Modal -->
+				<div id="myModal" class="modal fade" role="dialog">
+					<div class="modal-dialog">
+
+						<!-- Modal content-->
+						<div class="modal-content">
+							<form action="PostController" method="POST">
+								<div class="modal-header">
+
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+									<h4 class="modal-title">Add New Post</h4>
+								</div>
+								<div class="modal-body mod-body">
+
+									<div class="form-group">
+										<div class="col-md-12">
+											<label class="radio-inline"> <input name="posttype"
+												type="radio" name="optradio" value="offering">offering
+											</label> <label class="radio-inline"> <input name="posttype"
+												type="radio" value="asking" name="optradio">asking
+											</label>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<div class='col-md-11 input-group date'>
+											<input type='text' name="date" class="form-control"
+												id="datepicker" /> <span class="input-group-addon">
+												<span class="glyphicon glyphicon-calendar"></span>
+											</span>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-md-6">
+											<label for="ex1">From</label> <input name="from"
+												class="form-control" id="ex1" type="text">
+										</div>
+
+
+										<div class="col-md-6">
+											<label for="ex2">To</label> <input name="to"
+												class="form-control" id="ex2" type="text">
+										</div>
+									</div>
+
+									<div class="form-group">
+										<div class="col-md-12">
+											<label for="comment">Description:</label>
+											<textarea name="description" class="form-control" rows="5"
+												id="comment"></textarea>
+										</div>
+									</div>
+
+								</div>
+
+
+								<div class="modal-footer">
+									<!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+									<button type="submit" class="btn btn-success">Success</button>
+								</div>
+							</form>
+						</div>
+
+					</div>
+				</div>
+
+				<!-- Modal end -->
+				</ul>
+
 
 
 				<%-- <%@ page import="java.sql.*"%>
@@ -187,7 +193,7 @@
 				%> --%>
 
 
-				 <div class="tab-content">
+				<div class="tab-content">
 					<div id="post" class="tab-pane fade post in active">
 						<div class="post_block">
 							<div class="post-author">
@@ -202,7 +208,8 @@
 								</div>
 							</div>
 							<div class="post-desc">
-								<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>
+								<h1>Lorem ipsum dolor sit amet, consectetur adipisicing
+									elit</h1>
 								<img src="images/post/post.png" alt="post">
 								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 									Ut, tenetur natus doloremque laborum quos iste ipsum rerum
@@ -440,14 +447,12 @@
 
 
 
-			<div id="ajaxoutput">
-				
-				</div>
-
-	
+				<div id="ajaxoutput"></div>
 
 
-			</div> 
+
+
+			</div>
 
 			<div class="col-sm-3 inner-right">
 				<div class="mrgb-20">
@@ -460,11 +465,10 @@
 
 			</div>
 
-			</div>
-			<!-- row end -->
 		</div>
-		<!-- container-end -->
-	</section>
+		<!-- row end -->
+	</div>
+	<!-- container-end --> </section>
 	<!-- middle_section end -->
 
 
@@ -487,7 +491,7 @@
 	<!-- jQuery -->
 	<script src="view/js/jquery.js"></script>
 	<script src="view/js/bootstrap.min.js"></script>
-<!--  	<script src="view/js/custom.js"></script>-->
+	<!--  	<script src="view/js/custom.js"></script>-->
 	<script src="view/js/feed.js"></script>
 
 

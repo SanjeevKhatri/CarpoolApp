@@ -1,37 +1,63 @@
 package edu.mum.project.serviceImpl;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import com.mysql.jdbc.Connection;
+
+import edu.mum.project.dbConnection.DBConnection;
+import edu.mum.project.model.Comments;
 import edu.mum.project.model.Likes;
+import edu.mum.project.model.LikesOnPost;
+import edu.mum.project.model.PostOnComment;
 import edu.mum.project.service.LikeService;
 
-public class LikeServiceImpl implements LikeService {
+public class LikeServiceImpl {
 
-	PreparedStatement ps;
+	public boolean insertLike(String userEmail, int postId) throws Exception {
+		boolean flag = false;
+		int userId = 0;
 
-	@Override
-	public Likes addNewLikes(Likes likes) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		Connection con = (Connection) DBConnection.getConnection();
+		PreparedStatement ps1 = (PreparedStatement) con
+				.prepareStatement("SELECT userid FROM users where email='" + userEmail + "'");
+
+		ResultSet rs1 = ps1.executeQuery();
+		while (rs1.next()) {
+			userId = Integer.parseInt(rs1.getString("userid"));
+		}
+
+		String insert = "INSERT INTO likes(userid,postid) " + "values ('" + userId + "'," + "'" + postId + "')";
+
+		PreparedStatement psu = (PreparedStatement) con.prepareStatement(insert);
+		psu.executeUpdate();
+		flag = true;
+		return flag;
 	}
 
-	@Override
-	public void deleteLikes(int id) throws SQLException {
-		// TODO Auto-generated method stub
+	public ArrayList<String> getAllPostLikes(int postId) throws SQLException, Exception {
+		ArrayList allLikes = new ArrayList();
+		PreparedStatement ps = (PreparedStatement) DBConnection.getConnection().prepareStatement(
+				"SELECT * FROM users u INNER JOIN likes c INNER JOIN posts p on p.postid=c.postid and u.userid=c.userid WHERE p.postid="
+						+ postId + ";");
 
+		ResultSet rs = ps.executeQuery();
+		while (rs.next()) {
+			LikesOnPost likesOnPost = new LikesOnPost();
+
+			likesOnPost.setFullname(rs.getString("fullname"));
+			likesOnPost.setLikeid(Integer.parseInt(rs.getString("likeid")));
+			likesOnPost.setUserid(Integer.parseInt(rs.getString("userid")));
+			likesOnPost.setPostid(Integer.parseInt(rs.getString("postid")));
+			likesOnPost.setDatecreated(rs.getString("datecreated"));
+			likesOnPost.setDateupdated(rs.getString("dateupdated"));
+
+			allLikes.add(likesOnPost);
+		}
+
+		System.out.println(allLikes.toString());
+		return allLikes;
 	}
-
-	@Override
-	public Likes updateLikes(Likes likes) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Likes findLikes(int id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

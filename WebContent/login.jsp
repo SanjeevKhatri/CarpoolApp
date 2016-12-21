@@ -64,8 +64,8 @@
 					class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="index.html"> <img
-				src="view/images/logo.png" alt="logo"> <span>slogan is
-					here</span>
+				src="view/images/logo.png" alt="logo"> <span>MUM
+						Carpool</span>
 			</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -97,7 +97,7 @@
 
 
 				<div class="checkbox">
-					<label><input name="remember" id="remember" type="checkbox">
+					<label><input name="remember" id="remember" checked type="checkbox">
 						Remember me</label>
 				</div>
 				<input type="submit" value="Login" style="margin-top: 5px;">

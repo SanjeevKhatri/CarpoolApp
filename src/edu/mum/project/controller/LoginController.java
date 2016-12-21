@@ -26,6 +26,9 @@ public class LoginController extends HttpServlet {
 		String password = request.getParameter("password");
 
 		session.setAttribute("sessionEmail", email);
+		
+		session.setAttribute("yourName", email);
+		
 
 		String remembercbox = request.getParameter("remember");
 		if (remembercbox != null) {

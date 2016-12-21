@@ -2,6 +2,8 @@ package edu.mum.project.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,57 +15,54 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
+import edu.mum.project.model.Comments;
 import edu.mum.project.model.Posts;
+import edu.mum.project.serviceImpl.CommentServiceImpl;
 import edu.mum.project.serviceImpl.PostServiceImpl;
 
-@WebServlet("/PostController")
-public class PostController extends HttpServlet {
+@WebServlet("/CommentController")
+public class CommentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	PostServiceImpl psi = new PostServiceImpl();
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	CommentServiceImpl csi = new CommentServiceImpl();
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		CommentServiceImpl csi = new CommentServiceImpl();
+		ArrayList allComments = new ArrayList();
+
 		PrintWriter out = response.getWriter();
 		response.setContentType("application/json");
-		int tb=psi.getTableCount();
+
+		try {
+			allComments = csi.getAllPostComment(57);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		Gson gson = new Gson();
-		String jsonData = gson.toJson(tb);
-		out.println("{\"JSONDATAC\":" + jsonData + "}");
-		System.out.println("{\"JSONDATAC\":" + jsonData + "}");
-		
+		String jsonData = gson.toJson(allComments);
+		out.println("{\"JSONDATAAC\":" + jsonData + "}");
+		System.out.println("{\"JSONDATAAC\":" + jsonData + "}");
 	}
-	
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String semail = (String) session.getAttribute("sessionEmail");
-		Posts posts = new Posts();
-		
-//		postseesion
-//		HttpSession Postsession = request.getSession();
-//		Postsession.setAttribute("sessionPost", email);
+		Comments comments = new Comments();
 
-		String posttype = request.getParameter("posttype");
-		System.out.println(posttype);
-		String date = request.getParameter("date");
-		String fromlocation = request.getParameter("from");
-		String tolocation = request.getParameter("to");
-		String description = request.getParameter("description");
+		String postComment = request.getParameter("myComment");
+		System.out.println(semail + "postComment=++++++++++++++==================+++++++++=======" + postComment);
 
-		posts.setPosttype(posttype);
-		posts.setDescription(description);
-		posts.setDate(date);
-		posts.setFromlocation(fromlocation);
-		posts.setTolocation(tolocation);
+		comments.setComment(postComment);
 
 		try {
-			psi.insertPost(semail, posts);
+			csi.insertComment(semail, 57, comments);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		RequestDispatcher view = request.getRequestDispatcher("feed.jsp");
 		view.forward(request, response);
 	}

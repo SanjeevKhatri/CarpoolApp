@@ -35,7 +35,7 @@ $(document).ready(function () {
 			postContent+=" <div class='clear'></div><div class='post-desc'><p>description goes here</p>"+
 						"</div> <div class='post-foot'> <p class='like liked'><i class='fa fa-heart'></i><span>255</span>Likes</p>"+
                            " <p><i class='fa fa-comment'> </i><span>02</span>Comments</p></div><div class='leave-comment'><h4>Leave Comment</h4>"+
-                           " <form method='post' action='#'><textarea placeholder='Write comment here'></textarea><button class='btn-all'>Submit</button>"+
+                           " <form method='post' action='CommentController'><textarea name=\"myComment\" placeholder='Write comment here'></textarea><button class='btn-all'>Comment</button>"+
                        " </form> </div>";
 			postContent+="";
 			postContent+=" ";
@@ -89,6 +89,7 @@ $(document).ready(function () {
 							if(new_count>old_count){
 								
 								 $(".inner-top-link > li > a.notification").css("background-color","red");
+								 $(".inner-top-link > li > a.notification").attr("value","Notification (1)");
 							}
 							else{
 								

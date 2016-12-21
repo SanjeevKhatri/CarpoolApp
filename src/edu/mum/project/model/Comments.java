@@ -11,10 +11,7 @@ public class Comments {
 	private LocalDateTime datecreated;
 	private LocalDateTime dateupdated;
 
-	public Comments(int int1, String string, String string2, String string3, String string4, String string5,
-			String string6, LocalDate localDate, String string7, String string8, LocalDate localDate2,
-			LocalDate localDate3) {
-		// TODO Auto-generated constructor stub
+	public Comments() {
 	}
 
 	public int getCommentid() {
