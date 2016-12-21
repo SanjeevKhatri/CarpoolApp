@@ -65,7 +65,7 @@
 						<li><a href="#">Dashboard</a></li>
 						<li><a href="#">Profile</a></li>
 						<li class="divider"></li>
-						<li><a href="#">Logout</a></li>
+						<li><a href="LogoutController">Logout</a></li>
 					</ul></li>
 			</ul>
 		</div>
@@ -90,9 +90,9 @@
 			<div class="col-sm-6 inner-middle">
 
 				<ul class="nav nav-tabs">
-					<li class="active"><a data-toggle="tab" href="#post">Ride
+					<li class="active"><a id="offering" data-toggle="tab">Ride
 							Offers</a></li>
-					<li><a data-toggle="tab" href="#post1">Asking Ride</a></li>
+					<li><a data-toggle="tab" id="asking">Asking Ride</a></li>
 
 
 					<button type="button" class="btn btn-info btn-lg right"

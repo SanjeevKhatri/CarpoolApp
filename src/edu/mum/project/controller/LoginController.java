@@ -32,7 +32,8 @@ public class LoginController extends HttpServlet {
 				RequestDispatcher view = request.getRequestDispatcher("feed.jsp");
 				view.forward(request, response);
 			} else {
-				RequestDispatcher view = request.getRequestDispatcher("index.jsp");
+				request.setAttribute("logout","Either Email or Password is incorrect");
+				RequestDispatcher view = request.getRequestDispatcher("login.jsp");
 				view.forward(request, response);
 			}
 		} catch (Exception e) {

@@ -46,7 +46,8 @@
 					class="icon-bar"></span>
 			</button>
 			<a class="navbar-brand" href="index.html"> <img
-				src="view/images/logo.png" alt="logo"> <span>slogan is here</span>
+				src="view/images/logo.png" alt="logo"> <span>slogan is
+					here</span>
 			</a>
 		</div>
 		<!-- Collect the nav links, forms, and other content for toggling -->
@@ -67,17 +68,21 @@
 
 
 		<div class="top_form">
-			<h1>Login</h1>
+
+			<h1><%=request.getAttribute("logout")%></h1>
 			<form method="POST" action="LoginController">
 
-				<br class="clear"> <input name="email" type="email" placeholder="Email"
-					required> <input name="password" type="password" placeholder="Password"
-					required style="margin-top: 20px;"> <input type="submit"
+				<br class="clear"> <input name="email" type="email"
+					placeholder="Email" required> <input name="password"
+					type="password" placeholder="Password" required
+					style="margin-top: 20px;"> <input type="submit"
 					value="Login" style="margin-top: 30px;">
 				<div class="or">
 					<img src="view/images/or_bg.png" alt="">
 				</div>
-				<input type="submit" value="Sign Up">
+				<a href="index.jsp"><input type="button" value="Sign Up"
+					style="width: 100%; margin: 15px 0 0 0; padding: 0; border: none; background: #91bb3f; color: #fff; cursor: pointer; font-weight: 600; height: 38px; border-radius: 5px; font-size: 16px; border-bottom: 2px solid #7aa527;">
+				</a>
 
 			</form>
 		</div>

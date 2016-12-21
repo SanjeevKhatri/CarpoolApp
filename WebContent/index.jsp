@@ -34,6 +34,9 @@
 
 <body>
 
+
+
+
 	<!-- Navigation -->
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 		<div class="container">
@@ -56,7 +59,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="AboutUsController">About us</a></li>
 					<li><a href="SignUpController">Contact</a></li>
-					<li><a href="login.jsp" class="nav_btn">Login</a></li>
+					<li><a href="LoginHelper" class="nav_btn">Login</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -70,10 +73,10 @@
 			<div class="top_form pull-right">
 				<h1>Sign Up</h1>
 				<form method="POST" action="SignUpController">
-					<div class="small_input left">
+					
 						<input type="text" name="fullname" placeholder="Full name"
 							required>
-					</div>
+					
 					<br class="clear"> <input type="email" name="email"
 						placeholder="Email" required> <input type="password"
 						name="password" placeholder="Password"
