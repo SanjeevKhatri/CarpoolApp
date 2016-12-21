@@ -166,11 +166,7 @@
 
 					<!-- Modal end -->
 				</ul>
-				<div id="ajaxoutput">
 				
-				</div>
-
-
 
 
 				<%-- <%@ page import="java.sql.*"%>
@@ -191,7 +187,7 @@
 				%> --%>
 
 
-				<!-- <div class="tab-content">
+				 <div class="tab-content">
 					<div id="post" class="tab-pane fade post in active">
 						<div class="post_block">
 							<div class="post-author">
@@ -444,6 +440,12 @@
 
 
 
+			<div id="ajaxoutput">
+				
+				</div>
+
+	
+
 
 			</div> 
 
@@ -456,7 +458,7 @@
 					<img src="view/images/add1.jpg" alt="add1">
 				</div>
 
-			</div>-->
+			</div>
 
 			</div>
 			<!-- row end -->
