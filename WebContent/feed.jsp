@@ -57,7 +57,7 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="inner-top-link pull-right">
-				<li><a href="#">Notification <i class="fa fa-bell"></i></a></li>
+				<li><a href="#" class="notification">Notification <i class="fa fa-bell"></i></a></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">Account <span class="caret"></span></a>
 
@@ -166,11 +166,7 @@
 
 					<!-- Modal end -->
 				</ul>
-				<div id="ajaxoutput">
 				
-				</div>
-
-
 
 
 				<%-- <%@ page import="java.sql.*"%>
@@ -191,7 +187,7 @@
 				%> --%>
 
 
-				<!-- <div class="tab-content">
+				 <div class="tab-content">
 					<div id="post" class="tab-pane fade post in active">
 						<div class="post_block">
 							<div class="post-author">
@@ -444,6 +440,12 @@
 
 
 
+			<div id="ajaxoutput">
+				
+				</div>
+
+	
+
 
 			</div> 
 
@@ -456,7 +458,7 @@
 					<img src="view/images/add1.jpg" alt="add1">
 				</div>
 
-			</div>-->
+			</div>
 
 			</div>
 			<!-- row end -->
@@ -485,7 +487,7 @@
 	<!-- jQuery -->
 	<script src="view/js/jquery.js"></script>
 	<script src="view/js/bootstrap.min.js"></script>
-	<script src="view/js/custom.js"></script>
+<!--  	<script src="view/js/custom.js"></script>-->
 	<script src="view/js/feed.js"></script>
 
 

@@ -34,6 +34,24 @@
 
 <body>
 
+	<%
+    Cookie[] cookies=request.getCookies();
+    String userName = "", password = "",rememberVal="";
+    if (cookies != null) {
+         for (Cookie cookie : cookies) {
+           if(cookie.getName().equals("cookuser")) {
+             userName = cookie.getValue();
+           }
+           if(cookie.getName().equals("cookpass")){
+             password = cookie.getValue();
+           }
+           if(cookie.getName().equals("cookrem")){
+             rememberVal = cookie.getValue();
+           }
+        }
+    }
+%>
+
 	<!-- Navigation -->
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
@@ -72,10 +90,11 @@
 			<h1><%=request.getAttribute("logout")%></h1>
 			<form method="POST" action="LoginController">
 
-				<br class="clear"> <input name="email" type="email"
-					placeholder="Email" required> <input name="password"
-					type="password" placeholder="Password" required
-					style="margin-top: 20px;">
+				<br class="clear"> <input value="<%=userName%>" name="email"
+					type="email" placeholder="Email" required> <input
+					value="<%=password%>" name="password" type="password"
+					placeholder="Password" required style="margin-top: 20px;">
+
 
 				<div class="checkbox">
 					<label><input name="remember" id="remember" type="checkbox">
