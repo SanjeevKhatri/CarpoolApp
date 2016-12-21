@@ -28,6 +28,23 @@ $(document).ready(function () {
 });
 	
 	
+	// global variable  assign
+	
+			$.ajax({
+				url:'PostController',
+				type:'GET',
+				headers:{
+					Accept:"application/json; charset=utf-8",
+					"Content-Type" : "application/json; charset=utf-8"
+				},
+				success:function(result){
+					
+					 old_count=result.JSONDATAC;
+				}
+				
+			});
+	
+	
 	
 	// ajax call at certain interval
 	
