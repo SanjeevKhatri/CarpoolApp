@@ -115,9 +115,9 @@
 										<div class="form-group">
 											<div class="col-md-12">
 												<label class="radio-inline"> <input name="posttype"
-													type="radio" name="optradio" value="Offering">Offering
+													type="radio" name="optradio" value="offering">offering
 												</label> <label class="radio-inline"> <input name="posttype"
-													type="radio" value="Asking" name="optradio">Asking
+													type="radio" value="asking" name="optradio">asking
 												</label>
 											</div>
 										</div>

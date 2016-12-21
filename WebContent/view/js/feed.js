@@ -11,10 +11,11 @@ $(document).ready(function () {
 	success:function(result){
 		
 		$.each(result.JSONDATA,function(i,data){
-			
+			console.log(result.JSONDATA);
+			console.log(data.fromlocation);
 			var myHTML="";
-			myHTML+="<div class='offeredPost'><h2 class='offererName'>"+"UserName"+data.name+"</h2>";
-			myHTML+="<pre>"+data.post+"</pre>"+"<button class='btnLike' btn-postid=\""+data.postid+"\">Like</button>" +
+			myHTML+="<div class='offeredPost'><h2 class='offererName'>"+"UserName: "+data.name+"</h2>";
+			myHTML+="<pre>"+data.post+"</pre>"+"<pre>"+data.fromlocation+"</pre>"+"<button class='btnLike' btn-postid=\""+data.postid+"\">Like</button>" +
 					"<input type='hidden' name='txtHidden' value='"+data.postid+"'>" +
 							"     "+"<button class='btnComment' btn-postid=\""+data.postid+"\">Comment</button></div>" +
 									"<br><br>";
@@ -48,6 +49,10 @@ $(document).ready(function () {
 							if(new_count>old_count){
 								
 								 $(".inner-top-link > li > a.notification").css("background-color","red");
+							}
+							else{
+								
+								old_count = new_count;
 							}
 							console.log(result.JSONDATAC);
 						}

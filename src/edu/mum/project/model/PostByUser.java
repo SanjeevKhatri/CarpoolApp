@@ -5,6 +5,24 @@ public class PostByUser {
 	private int userid;
 	private int posttype;
 	private String post;
+	private String fromlocation;
+	private String tolocation;
+	public String getFromlocation() {
+		return fromlocation;
+	}
+
+	public void setFromlocation(String fromlocation) {
+		this.fromlocation = fromlocation;
+	}
+
+	public String getTolocation() {
+		return tolocation;
+	}
+
+	public void setTolocation(String tolocation) {
+		this.tolocation = tolocation;
+	}
+
 	private String datecreated;
 	private String dateupdated;
 	private String name;

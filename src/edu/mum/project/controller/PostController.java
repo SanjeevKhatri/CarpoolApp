@@ -42,6 +42,7 @@ public class PostController extends HttpServlet {
 		
 
 		String posttype = request.getParameter("posttype");
+		System.out.println(posttype);
 		String date = request.getParameter("date");
 		String fromlocation = request.getParameter("from");
 		String tolocation = request.getParameter("to");

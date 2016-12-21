@@ -36,7 +36,7 @@ public class DisplayPost extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		response.setContentType("application/json");
 
-		allPost = psi.getOfferedPost();
+		allPost = psi.getAllPost();
 
 		Gson gson = new Gson();
 		String jsonData = gson.toJson(allPost);
