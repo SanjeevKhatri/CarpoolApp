@@ -75,8 +75,16 @@
 				<br class="clear"> <input name="email" type="email"
 					placeholder="Email" required> <input name="password"
 					type="password" placeholder="Password" required
-					style="margin-top: 20px;"> <input type="submit"
-					value="Login" style="margin-top: 30px;">
+					style="margin-top: 20px;">
+
+				<div class="checkbox">
+					<label><input name="remember" id="remember" type="checkbox">
+						Remember me</label>
+				</div>
+				<input type="submit" value="Login" style="margin-top: 5px;">
+
+
+
 				<div class="or">
 					<img src="view/images/or_bg.png" alt="">
 				</div>
