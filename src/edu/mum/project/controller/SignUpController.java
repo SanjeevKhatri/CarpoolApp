@@ -5,9 +5,11 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import edu.mum.project.model.Users;
 import edu.mum.project.service.UserService;
@@ -25,10 +27,15 @@ public class SignUpController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		HttpSession session = request.getSession();
+		
+		
 		Users users= new Users();
 		UserServiceImpl usi= new UserServiceImpl();
 		String fullname = request.getParameter("fullname");
 		String email = request.getParameter("email");
+		session.setAttribute("sessionEmail", email);
 		String password = request.getParameter("password");
 		String gender = request.getParameter("gender");
 		String state = request.getParameter("state");
@@ -52,7 +59,7 @@ public class SignUpController extends HttpServlet {
 		}
 		
 		
-		RequestDispatcher view = request.getRequestDispatcher("view/feed.html");
+		RequestDispatcher view = request.getRequestDispatcher("feed.jsp");
 		view.forward(request, response);
 	}
 

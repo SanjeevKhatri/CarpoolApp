@@ -61,7 +61,6 @@ public class UserServiceImpl{
 			sb.append(String.format("%02x", b & 0xff));
 		}
 		emailmd = sb.toString();
-		System.out.println(emailmd);
 		Connection con = (Connection) DBConnection.getConnection();
 		String query = "select email,password from users";
 		PreparedStatement stat = (PreparedStatement) con.prepareStatement(query);

@@ -6,13 +6,40 @@ import java.time.LocalDateTime;
 public class Posts {
 	private int postid;
 	private Users users;
-	private Posts posts;
+	private String description;
 	private String posttype;
-	private LocalDateTime datecreated;
-	private LocalDateTime dateupdated;
+	private String date;
+	private String fromlocation;
+	private String tolocation;
+	public String getDate() {
+		return date;
+	}
 
-	public Posts(int int1, int int2, String string, String string2, LocalDate localDate, LocalDate localDate2) {
-		// TODO Auto-generated constructor stub
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getFromlocation() {
+		return fromlocation;
+	}
+
+	public void setFromlocation(String fromlocation) {
+		this.fromlocation = fromlocation;
+	}
+
+	public String getTolocation() {
+		return tolocation;
+	}
+
+	public void setTolocation(String tolocation) {
+		this.tolocation = tolocation;
+	}
+
+	private LocalDateTime datecreated;
+	private String dateupdated;
+
+	public Posts() {
+
 	}
 
 	public int getPostid() {
@@ -31,20 +58,20 @@ public class Posts {
 		this.users = users;
 	}
 
-	public Posts getPosts() {
-		return posts;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setPosts(Posts posts) {
-		this.posts = posts;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getPosttype() {
 		return posttype;
 	}
 
-	public void setPosttype(String posttype) {
-		this.posttype = posttype;
+	public void setPosttype(String i) {
+		this.posttype = i;
 	}
 
 	public LocalDateTime getDatecreated() {
@@ -55,11 +82,11 @@ public class Posts {
 		this.datecreated = datecreated;
 	}
 
-	public LocalDateTime getDateupdated() {
+	public String getDateupdated() {
 		return dateupdated;
 	}
 
-	public void setDateupdated(LocalDateTime dateupdated) {
-		this.dateupdated = dateupdated;
+	public void setDateupdated(String string) {
+		this.dateupdated = string;
 	}
 }

@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,8 +45,9 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html"> <img
-					src="view/images/logo.png" alt="logo"> <span>MUM Carpool</span>
+				<a class="navbar-brand" href="index.jsp"> <img
+					src="view/images/logo.png" alt="logo"> <span>MUM
+						Carpool</span>
 				</a>
 			</div>
 			<!-- Collect the nav links, forms, and other content for toggling -->
@@ -53,7 +56,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="AboutUsController">About us</a></li>
 					<li><a href="SignUpController">Contact</a></li>
-					<li><a href="view/login.html" class="nav_btn">Login</a></li>
+					<li><a href="login.jsp" class="nav_btn">Login</a></li>
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -68,22 +71,25 @@
 				<h1>Sign Up</h1>
 				<form method="POST" action="SignUpController">
 					<div class="small_input left">
-						<input type="text" name="fullname" placeholder="Full name" required>
+						<input type="text" name="fullname" placeholder="Full name"
+							required>
 					</div>
-					<br class="clear"> <input type="email" name="email" placeholder="Email"
-						required> <input type="password" name="password" placeholder="Password"
+					<br class="clear"> <input type="email" name="email"
+						placeholder="Email" required> <input type="password"
+						name="password" placeholder="Password"
 						pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$"
 						title="should be at least 6 letters and have at least one capital letter, one small letter,
 one number "
-						required> <br /> <select name="gender" class="form-control selectItem"
-						id="selectGender">
+						required> <br /> <select name="gender"
+						class="form-control selectItem" id="selectGender">
 						<option>Gender</option>
 						<option>Male</option>
 						<option>Female</option>
 
 					</select>
 					<div class="small_input left">
-						<select class="form-control selectItem" name="state" id="selectState">
+						<select class="form-control selectItem" name="state"
+							id="selectState">
 
 							<option value="">State</option>
 							<option value="AL">Alabama</option>
@@ -142,8 +148,8 @@ one number "
 					<div class="small_input right">
 						<input type="text" name="city" placeholder="City" required>
 					</div>
-					<br class="clear"> <input name="street" type="text" placeholder="Street"
-						required>
+					<br class="clear"> <input name="street" type="text"
+						placeholder="Street" required>
 
 					<div class="small_input left">
 						<input type="text" name="zip" placeholder="Zip Code" required>
@@ -311,7 +317,7 @@ one number "
 
 	<footer>
 		<div class="container">
-			<p class="copyright">Copyright Â© Carpool 2016</p>
+			<p class="copyright">Copyright © Carpool 2016</p>
 			<ul class="foot-social">
 				<li><a href="#" target="_blank"><i
 						class="fa fa-facebook-square"></i></a></li>

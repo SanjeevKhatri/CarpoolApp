@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import edu.mum.project.serviceImpl.UserServiceImpl;
 
@@ -15,27 +16,27 @@ import edu.mum.project.serviceImpl.UserServiceImpl;
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		HttpSession session = request.getSession();
+		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		UserServiceImpl usi= new UserServiceImpl();
+		session.setAttribute("sessionEmail", email);
+
+		UserServiceImpl usi = new UserServiceImpl();
 		try {
-			if(usi.checkUserLogin(email, password)==true){
-				RequestDispatcher view = request.getRequestDispatcher("view/feed.html");
-				view.forward(request, response);				
-			}
-			else{
-				RequestDispatcher view = request.getRequestDispatcher("view/index.html");
+			if (usi.checkUserLogin(email, password)) {
+				RequestDispatcher view = request.getRequestDispatcher("feed.jsp");
+				view.forward(request, response);
+			} else {
+				RequestDispatcher view = request.getRequestDispatcher("index.jsp");
 				view.forward(request, response);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
 	}
 }

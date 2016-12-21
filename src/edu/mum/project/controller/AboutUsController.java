@@ -15,7 +15,7 @@ public class AboutUsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher view = request.getRequestDispatcher("view/inner.html");
+		RequestDispatcher view = request.getRequestDispatcher("feed.jsp");
 		view.forward(request, response);
 	}
 
