@@ -15,6 +15,8 @@ import edu.mum.project.model.Posts;
 import edu.mum.project.service.PostService;
 
 public class PostServiceImpl {
+	
+	
 
 	public boolean insertPost(String userEmail, Posts post) throws Exception {
 		boolean flag = false;
@@ -41,42 +43,61 @@ public class PostServiceImpl {
 		return flag;
 	}
 
-//	public ArrayList<Posts> getAllPosts() {
-//		List<Posts> AllPosts = new ArrayList<Posts>();
-//		Connection con = (Connection) DBConnection.getConnection();
-//		PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT * FROM posts");
-//		ResultSet rs = ps.executeQuery();
-//		while (rs.next()) {
-//			Posts posts = new Posts();
-//			String postDate = rs.getString(6);
-//			String postFromLocation = rs.getString(7);
-//			String postToLocation = rs.getString(8);
-//			String postDescription = rs.getString(9);
-//			posts.setDate(postDate);
-//			posts.setFromlocation(postFromLocation);
-//			posts.setTolocation(postToLocation);
-//			posts.setDescription(postDescription);
-//			AllPosts.add(posts);
-//		}
-//	}
+	// public ArrayList<Posts> getAllPosts() {
+	// List<Posts> AllPosts = new ArrayList<Posts>();
+	// Connection con = (Connection) DBConnection.getConnection();
+	// PreparedStatement ps = (PreparedStatement) con.prepareStatement("SELECT *
+	// FROM posts");
+	// ResultSet rs = ps.executeQuery();
+	// while (rs.next()) {
+	// Posts posts = new Posts();
+	// String postDate = rs.getString(6);
+	// String postFromLocation = rs.getString(7);
+	// String postToLocation = rs.getString(8);
+	// String postDescription = rs.getString(9);
+	// posts.setDate(postDate);
+	// posts.setFromlocation(postFromLocation);
+	// posts.setTolocation(postToLocation);
+	// posts.setDescription(postDescription);
+	// AllPosts.add(posts);
+	// }
+	// }
 
+	public int getTableCount() {
+		int tableCount = 0;
+		try {
+			PreparedStatement ps = (PreparedStatement) DBConnection.getConnection()
+					.prepareStatement("SELECT * FROM posts");
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				tableCount++;
+			}
+		} catch (Exception ex) {
+			System.out.println(ex.toString());
+		}
+		return tableCount;
+	}
+
+	
+	
+	
 	public ArrayList<String> getOfferedPost() {
 		ArrayList allPost = new ArrayList();
 		try {
 			PreparedStatement ps = (PreparedStatement) DBConnection.getConnection().prepareStatement(
-					"SELECT * FROM users u INNER JOIN posts p on u.userid=p.userid WHERE p.posttype=1 ORDER BY  p.dateupdated DESC LIMIT 3;");
+					"SELECT * FROM users u INNER JOIN posts p on u.userid=p.userid WHERE p.posttype=0 ORDER BY  p.dateupdated DESC LIMIT 25;");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				PostByUser userPost = new PostByUser();
-				
+
 				userPost.setPostid(Integer.parseInt(rs.getString("postid")));
 				userPost.setUserid(Integer.parseInt(rs.getString("userid")));
 				userPost.setPosttype(Integer.parseInt(rs.getString("posttype")));
-				userPost.setPost(rs.getString("post"));
+				userPost.setPost(rs.getString("description"));
 				userPost.setDatecreated(rs.getString("datecreated"));
 				userPost.setDatecreated(rs.getString("dateupdated"));
 				userPost.setName(rs.getString("fullname"));
-				
+
 				allPost.add(userPost);
 			}
 			return allPost;

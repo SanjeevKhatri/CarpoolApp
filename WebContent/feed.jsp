@@ -166,7 +166,7 @@
 
 					<!-- Modal end -->
 				</ul>
-				<div id="ajaxOutput">
+				<div id="ajaxoutput">
 				
 				</div>
 

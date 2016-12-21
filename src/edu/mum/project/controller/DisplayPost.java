@@ -23,24 +23,25 @@ import edu.mum.project.serviceImpl.PostServiceImpl;
 @WebServlet("/DisplayPost")
 public class DisplayPost extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		PostServiceImpl psi= new PostServiceImpl();
-		ArrayList allPost = new ArrayList();
-		
-		PrintWriter out= response.getWriter();
-		response.setContentType("application/json");
-		
-		allPost=psi.getOfferedPost();
-				
-		Gson gson = new Gson();
-		String jsonData = gson.toJson("allPost");
-		out.println("{\"JSONDATA\":" + jsonData + "}");
-		System.out.println("{\"JSONDATA\":" + jsonData + "}");
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		PostServiceImpl psi = new PostServiceImpl();
+		ArrayList allPost = new ArrayList();
+
+		PrintWriter out = response.getWriter();
+		response.setContentType("application/json");
+
+		allPost = psi.getOfferedPost();
+
+		Gson gson = new Gson();
+		String jsonData = gson.toJson(allPost);
+		out.println("{\"JSONDATA\":" + jsonData + "}");
+		System.out.println("{\"JSONDATA\":" + jsonData + "}");
 	}
 
 }
