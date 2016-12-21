@@ -49,6 +49,10 @@ $(document).ready(function () {
 								
 								 $(".inner-top-link > li > a.notification").css("background-color","red");
 							}
+							else{
+								
+								old_count = new_count;
+							}
 							console.log(result.JSONDATAC);
 						}
 					});
