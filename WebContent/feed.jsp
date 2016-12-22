@@ -65,8 +65,8 @@
 					data-toggle="dropdown" href="#">Account <span class="caret"></span></a>
 
 					<ul class="dropdown-menu">
-						<li><a href="#">Welcome, <br>
-							<i class="fa fa-user fa-fw"></i><%=session.getAttribute("yourName")%></a></li>
+						<li><a href="#">Welcome, <br> <i
+								class="fa fa-user fa-fw"></i><%=session.getAttribute("yourName")%></a></li>
 						<li><a href="#"><i class="fa fa-pencil fa-fw"></i>Edit
 								Profile</a></li>
 						<li class="divider"></li>
@@ -95,359 +95,92 @@
 			<div class="col-sm-6 inner-middle">
 
 				<ul class="nav nav-tabs">
-					<li class="active"><a id="offering" data-toggle="tab">Ride
-							Offers</a></li>
-					<li><a data-toggle="tab" id="asking">Asking Ride</a></li>
-				</ul>
+					<li class="active"><a data-toggle="tab" href="#post">Offering
+							Ride</a></li>
+					<li id="post3"><a data-toggle="tab" href="#post1">Asking
+							Ride</a></li>
 
 
-				<button type="button" class="btn btn-info btn-lg right"
-					data-toggle="modal" data-target="#myModal">Add New Post</button>
-				<div class="clear_right"></div>
-				<!-- Modal -->
-				<div id="myModal" class="modal fade" role="dialog">
-					<div class="modal-dialog">
+					<button type="button" class="btn btn-info btn-lg right"
+						data-toggle="modal" data-target="#myModal">Add New Post</button>
+					<div class="clear_right"></div>
+					<!-- Modal -->
+					<div id="myModal" class="modal fade" role="dialog">
+						<div class="modal-dialog">
 
-						<!-- Modal content-->
-						<div class="modal-content">
-							<form action="PostController" method="POST">
-								<div class="modal-header">
+							<!-- Modal content-->
+							<div class="modal-content">
+								<form action="PostController" method="POST">
+									<div class="modal-header">
 
-									<button type="button" class="close" data-dismiss="modal">&times;</button>
-									<h4 class="modal-title">Add New Post</h4>
-								</div>
-								<div class="modal-body mod-body">
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+										<h4 class="modal-title">Add New Post</h4>
+									</div>
+									<div class="modal-body mod-body">
 
-									<div class="form-group">
-										<div class="col-md-12">
-											<label class="radio-inline"> <input name="posttype"
-												type="radio" name="optradio" value="offering">offering
-											</label> <label class="radio-inline"> <input name="posttype"
-												type="radio" value="asking" name="optradio">asking
-											</label>
+										<div class="form-group">
+											<div class="col-md-12">
+												<label class="radio-inline"> <input name="posttype"
+													type="radio" name="optradio" value="offering">offering
+												</label> <label class="radio-inline"> <input name="posttype"
+													type="radio" value="asking" name="optradio">asking
+												</label>
+											</div>
 										</div>
+
+										<div class="form-group">
+											<div class='col-md-11 input-group date'>
+												<input type='text' name="date" class="form-control"
+													id="datepicker" /> <span class="input-group-addon">
+													<span class="glyphicon glyphicon-calendar"></span>
+												</span>
+											</div>
+										</div>
+										<div class="form-group">
+											<div class="col-md-6">
+												<label for="ex1">From</label> <input name="from"
+													class="form-control" id="ex1" type="text">
+											</div>
+
+
+											<div class="col-md-6">
+												<label for="ex2">To</label> <input name="to"
+													class="form-control" id="ex2" type="text">
+											</div>
+										</div>
+
+										<div class="form-group">
+											<div class="col-md-12">
+												<label for="comment">Description:</label>
+												<textarea name="description" class="form-control" rows="5"
+													id="comment"></textarea>
+											</div>
+										</div>
+
 									</div>
 
-									<div class="form-group">
-										<div class='col-md-11 input-group date'>
-											<input type='text' name="date" class="form-control"
-												id="datepicker" /> <span class="input-group-addon">
-												<span class="glyphicon glyphicon-calendar"></span>
-											</span>
-										</div>
+
+									<div class="modal-footer">
+										<!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+										<button type="submit" class="btn btn-success">Submit</button>
 									</div>
-									<div class="form-group">
-										<div class="col-md-6">
-											<label for="ex1">From</label> <input name="from"
-												class="form-control" id="ex1" type="text">
-										</div>
+								</form>
+							</div>
 
-
-										<div class="col-md-6">
-											<label for="ex2">To</label> <input name="to"
-												class="form-control" id="ex2" type="text">
-										</div>
-									</div>
-
-									<div class="form-group">
-										<div class="col-md-12">
-											<label for="comment">Description:</label>
-											<textarea name="description" class="form-control" rows="5"
-												id="comment"></textarea>
-										</div>
-									</div>
-
-								</div>
-
-
-								<div class="modal-footer">
-									<!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-									<button type="submit" class="btn btn-success">Success</button>
-								</div>
-							</form>
 						</div>
-
 					</div>
-				</div>
 
-				<!-- Modal end -->
+					<!-- Modal end -->
 				</ul>
-
-
-
-				<%-- <%@ page import="java.sql.*"%>
-
-				<%
-						try {
-							Class.forName("com.mysql.jdbc.Driver");
-							Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/carpoolingdb?zeroDateTimeBehavior=convertToNull", "root", "root");  
-							PreparedStatement ps = con.prepareStatement("select * from posts");
-							ResultSet rs = ps.executeQuery();
-							while (rs.next()) {
-								out.print("Date : "+rs.getString(6) + " <br>From Location : " + rs.getString(7)+" <br>To Location "+rs.getString(8)+" <br>Description "+rs.getString(9)+"<br><hr>");
-							}
-							con.close();
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-				%> --%>
-
 
 				<div class="tab-content">
-					<div id="post" class="tab-pane fade post in active">
-						<div class="post_block">
-							<div class="post-author">
-								<div class="img-holder">
-									<img src="view/images/thumb/default.jpg" alt="img">
-								</div>
-								<div class="text-holder">
-									<h4>Sanjay Shrestha</h4>
-									<p>
-										2016-12-22 <span>3:45pm</span>
-									</p>
-								</div>
-							</div>
-							<div class="post-desc">
-								<h1>Lorem ipsum dolor sit amet, consectetur adipisicing
-									elit</h1>
-								<img src="images/post/post.png" alt="post">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-									Ut, tenetur natus doloremque laborum quos iste ipsum rerum
-									obcaecati impedit odit illo dolorum ab tempora nihil dicta
-									earum fugiat. Temporibus, voluptatibus. Lorem ipsum dolor sit
-									amet, consectetur adipisicing elit. Eos, doloribus, dolorem
-									iusto blanditiis unde eius illum consequuntur neque dicta
-									incidunt ullam ea hic porro optio ratione repellat
-									perspiciatis. Enim, iure! Lorem ipsum dolor sit amet,
-									consectetur adipisicing elit. Error, nostrum, aliquid, animi,
-									ut quas placeat totam sunt tempora commodi nihil ullam alias
-									modi dicta saepe minima ab quo voluptatem obcaecati?</p>
-							</div>
-
-							<div class="post-foot">
-								<p class="like liked">
-									<i class="fa fa-heart"></i><span>255</span>Likes
-								</p>
-								<p>
-									<i class="fa fa-comment"></i><span>02</span>Comments
-								</p>
-							</div>
-
-							<div class="leave-comment">
-								<h4>Leave Comment</h4>
-								<form method="post" action="#">
-									<textarea placeholder="Write comment here"></textarea>
-									<button class="btn-all">Submit</button>
-								</form>
-							</div>
-
-							<div class="comments-wrap">
-								<div class="single-comment">
-									<div class="img-holder">
-										<img src="view/images/thumb/img.jpg" alt="img">
-									</div>
-									<div class="text-holder">
-										<h4>
-											Navraj Bhattarai <span>August 25, 2014 at 9:30 PM</span>
-										</h4>
-										<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
-											metus scelerisque ante sollicitudin commodo. Cras purus odio,
-											vestibulum in vulputate at, tempus viverra turpis.</p>
-									</div>
-								</div>
-
-								<div class="single-comment">
-									<div class="img-holder">
-										<img src="view/images/thumb/default.jpg" alt="default">
-									</div>
-									<div class="text-holder">
-										<h4>
-											Navraj Bhattarai <span>August 25, 2014 at 9:30 PM</span>
-										</h4>
-										<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
-											metus scelerisque ante sollicitudin commodo. Cras purus odio,
-											vestibulum in vulputate at, tempus viverra turpis.</p>
-									</div>
-								</div>
-
-							</div>
-
-
-						</div>
-
-						<div class="post_block">
-							<div class="post-author">
-								<div class="img-holder">
-									<img src="view/images/thumb/default.jpg" alt="img">
-								</div>
-								<div class="text-holder">
-									<h4>Sanjay Shrestha</h4>
-									<p>
-										2016-12-22 <span>3:45pm</span>
-									</p>
-								</div>
-							</div>
-							<div class="post-desc">
-								<h1>Lorem ipsum dolor sit amet, consectetur adipisicing
-									elit</h1>
-								<img src="view/images/post/post.png" alt="post">
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-									Ut, tenetur natus doloremque laborum quos iste ipsum rerum
-									obcaecati impedit odit illo dolorum ab tempora nihil dicta
-									earum fugiat. Temporibus, voluptatibus. Lorem ipsum dolor sit
-									amet, consectetur adipisicing elit. Eos, doloribus, dolorem
-									iusto blanditiis unde eius illum consequuntur neque dicta
-									incidunt ullam ea hic porro optio ratione repellat
-									perspiciatis. Enim, iure! Lorem ipsum dolor sit amet,
-									consectetur adipisicing elit. Error, nostrum, aliquid, animi,
-									ut quas placeat totam sunt tempora commodi nihil ullam alias
-									modi dicta saepe minima ab quo voluptatem obcaecati?</p>
-							</div>
-
-							<div class="post-foot">
-								<p class="like">
-									<i class="fa fa-heart"></i><span>255</span>Likes
-								</p>
-								<p>
-									<i class="fa fa-comment"></i><span>02</span>Comments
-								</p>
-							</div>
-
-							<div class="leave-comment">
-								<h4>Leave Comment</h4>
-								<form method="post" action="#">
-									<textarea placeholder="Write comment here"></textarea>
-									<button class="btn-all">Submit</button>
-								</form>
-							</div>
-
-							<div class="comments-wrap">
-								<div class="single-comment">
-									<div class="img-holder">
-										<img src="images/thumb/img.jpg" alt="img">
-									</div>
-									<div class="text-holder">
-										<h4>
-											Navraj Bhattarai <span>August 25, 2014 at 9:30 PM</span>
-										</h4>
-										<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
-											metus scelerisque ante sollicitudin commodo. Cras purus odio,
-											vestibulum in vulputate at, tempus viverra turpis.</p>
-									</div>
-								</div>
-
-								<div class="single-comment">
-									<div class="img-holder">
-										<img src="view/images/thumb/default.jpg" alt="default">
-									</div>
-									<div class="text-holder">
-										<h4>
-											Navraj Bhattarai <span>August 25, 2014 at 9:30 PM</span>
-										</h4>
-										<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
-											metus scelerisque ante sollicitudin commodo. Cras purus odio,
-											vestibulum in vulputate at, tempus viverra turpis.</p>
-									</div>
-								</div>
-
-							</div>
-
-
-						</div>
-					</div>
+					<div id="post" class="tab-pane fade post in active"></div>
 					<div id="post1" class="tab-pane fade">
 
-						<div id="post1" class="tab-pane fade in active">
-
-
-							<div class="post_block">
-								<div class="post-author">
-									<div class="img-holder">
-										<img src="view/images/thumb/default.jpg" alt="img">
-									</div>
-									<div class="text-holder">
-										<h4>Sanjay Shrestha</h4>
-										<p>
-											2016-12-22 <span>3:45pm</span>
-										</p>
-
-									</div>
-								</div>
-								<div class="post-desc">
-									<h1>Lorem ipsum dolor sit amet, consectetur adipisicing
-										elit</h1>
-									<img src="view/images/post/post.png" alt="post">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-										elit. Ut, tenetur natus doloremque laborum quos iste ipsum
-										rerum obcaecati impedit odit illo dolorum ab tempora nihil
-										dicta earum fugiat. Temporibus, voluptatibus. Lorem ipsum
-										dolor sit amet, consectetur adipisicing elit. Eos, doloribus,
-										dolorem iusto blanditiis unde eius illum consequuntur neque
-										dicta incidunt ullam ea hic porro optio ratione repellat
-										perspiciatis. Enim, iure! Lorem ipsum dolor sit amet,
-										consectetur adipisicing elit. Error, nostrum, aliquid, animi,
-										ut quas placeat totam sunt tempora commodi nihil ullam alias
-										modi dicta saepe minima ab quo voluptatem obcaecati?</p>
-								</div>
-
-								<div class="post-foot">
-									<p class="like">
-										<i class="fa fa-heart"></i><span>255</span>Likes
-									</p>
-									<p>
-										<i class="fa fa-comment"></i><span>02</span>Comments
-									</p>
-								</div>
-
-								<div class="leave-comment">
-									<h4>Leave Comment</h4>
-									<form method="post" action="#">
-										<textarea placeholder="Write comment here"></textarea>
-										<button class="btn-all">Submit</button>
-									</form>
-								</div>
-
-								<div class="comments-wrap">
-									<div class="single-comment">
-										<div class="img-holder">
-											<img src="view/images/thumb/img.jpg" alt="img">
-										</div>
-										<div class="text-holder">
-											<h4>
-												Navraj Bhattarai <span>August 25, 2014 at 9:30 PM</span>
-											</h4>
-											<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
-												metus scelerisque ante sollicitudin commodo. Cras purus
-												odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-										</div>
-									</div>
-
-									<div class="single-comment">
-										<div class="img-holder">
-											<img src="view/images/thumb/default.jpg" alt="default">
-										</div>
-										<div class="text-holder">
-											<h4>
-												Navraj Bhattarai <span>August 25, 2014 at 9:30 PM</span>
-											</h4>
-											<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel
-												metus scelerisque ante sollicitudin commodo. Cras purus
-												odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-										</div>
-									</div>
-
-								</div>
-
-
-							</div>
-						</div>
+						<div id="post1 post2" class="tab-pane fade in active"></div>
 
 					</div>
 				</div>
-
-
-
-				<div id="ajaxoutput"></div>
 
 
 
@@ -471,29 +204,28 @@
 	<!-- container-end --> </section>
 	<!-- middle_section end -->
 
+	<!-- --ok -ghghg->
+    <footer>
+    	<div class="container">
+        	<p class="copyright">Copyright © Carpool 2016</p>
+            <ul class="foot-social">
+            	<li><a href="#" target="_blank"><i class="fa fa-facebook-square"></i></a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-twitter-square"></i></a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-google-plus-square"></i></a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-youtube-square"></i></a></li>
+            </ul>
+        </div>	
+    </footer>
 
-	<footer>
-	<div class="container">
-		<p class="copyright">Copyright © Carpool 2016</p>
-		<ul class="foot-social">
-			<li><a href="#" target="_blank"><i
-					class="fa fa-facebook-square"></i></a></li>
-			<li><a href="#" target="_blank"><i
-					class="fa fa-twitter-square"></i></a></li>
-			<li><a href="#" target="_blank"><i
-					class="fa fa-google-plus-square"></i></a></li>
-			<li><a href="#" target="_blank"><i
-					class="fa fa-youtube-square"></i></a></li>
-		</ul>
-	</div>
-	</footer>
-
-	<!-- jQuery -->
+    <!-- jQuery -->
 	<script src="view/js/jquery.js"></script>
 	<script src="view/js/bootstrap.min.js"></script>
-	<!--  	<script src="view/js/custom.js"></script>-->
 	<script src="view/js/feed.js"></script>
-
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script async defer
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtiMx-TubW49qgT_lgULfvzweEu1542NA&callback=initMap"></script>
+	<script src="view/js/weather_map_api.js" type="text/javascript"></script>
 
 
 </body>
