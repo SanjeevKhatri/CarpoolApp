@@ -34,7 +34,10 @@ public class CommentController extends HttpServlet {
 		response.setContentType("application/json");
 
 		try {
-			allComments = csi.getAllPostComment(57);
+			int pid = Integer.parseInt(request.getParameter("hid"));
+			System.out.println(pid+".................................");
+			allComments = csi.getAllPostComment(pid);
+			System.out.println(allComments+"...........222222222222222222222......................");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -51,13 +54,14 @@ public class CommentController extends HttpServlet {
 		String semail = (String) session.getAttribute("sessionEmail");
 		Comments comments = new Comments();
 
+		int pid = Integer.parseInt(request.getParameter("hid"));
 		String postComment = request.getParameter("myComment");
 		System.out.println(semail + "postComment=++++++++++++++==================+++++++++=======" + postComment);
 
 		comments.setComment(postComment);
 
 		try {
-			csi.insertComment(semail, 57, comments);
+			csi.insertComment(semail, pid, comments);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -57,9 +57,9 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="inner-top-link pull-right">
-				<li><a href="#">Weather Map <i class="fa fa-sun-o"
+				<li><a href="WeatherMap.jsp">Weather Map <i class="fa fa-sun-o"
 						aria-hidden="true"></i></a></li>
-				<li><a href="#" class="notification">Notification <i
+				<li><a href="feed.jsp" class="notification">Notification <i
 						class="fa fa-bell"></i></a></li>
 				<li class="dropdown"><a class="dropdown-toggle"
 					data-toggle="dropdown" href="#">Account <span class="caret"></span></a>
@@ -67,10 +67,12 @@
 					<ul class="dropdown-menu">
 						<li><a href="#">Welcome, <br> <i
 								class="fa fa-user fa-fw"></i><%=session.getAttribute("yourName")%></a></li>
-						<li><a href="#"><i class="fa fa-pencil fa-fw"></i>Edit
+						<li><a href="editprofile.jsp"><i class="fa fa-pencil fa-fw"></i>Edit
 								Profile</a></li>
+								<li><a href="Vpost"><i class="fa fa-rss"></i>View Your Post</a></li>
 						<li class="divider"></li>
 						<li><a href="LogoutController"><i class="fa fa-unlock"></i>Logout</a></li>
+			
 					</ul></li>
 			</ul>
 		</div>
@@ -88,7 +90,7 @@
 						<img src="view/images/thumb/default.jpg" alt="default">
 					</div>
 					<div class="text-holder">
-						<h4>Sanjay Shrestha</h4>
+						<h4><%=session.getAttribute("yourName")%></h4>
 					</div>
 				</div>
 			</div>
@@ -119,7 +121,7 @@
 									<div class="modal-body mod-body">
 
 										<div class="form-group">
-											<div class="col-md-12">
+											<div class="col-md-12" style="margin-bottom:10px;">
 												<label class="radio-inline"> <input name="posttype"
 													type="radio" name="optradio" value="offering">offering
 												</label> <label class="radio-inline"> <input name="posttype"
@@ -129,11 +131,9 @@
 										</div>
 
 										<div class="form-group">
-											<div class='col-md-11 input-group date'>
-												<input type='text' name="date" class="form-control"
-													id="datepicker" /> <span class="input-group-addon">
-													<span class="glyphicon glyphicon-calendar"></span>
-												</span>
+											<div class='col-md-11 input-group date' style="margin-top:10px;margin-left:16px;">
+												<input type='date' name="date" class="form-control"
+													id="datepicker" /> 
 											</div>
 										</div>
 										<div class="form-group">
@@ -221,12 +221,8 @@
 	<script src="view/js/jquery.js"></script>
 	<script src="view/js/bootstrap.min.js"></script>
 	<script src="view/js/feed.js"></script>
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-	<script async defer
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtiMx-TubW49qgT_lgULfvzweEu1542NA&callback=initMap"></script>
-	<script src="view/js/weather_map_api.js" type="text/javascript"></script>
-
+	
+	
 
 </body>
 

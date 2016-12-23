@@ -30,10 +30,11 @@ $(document).ready(function () {
 			postContent+=" <div class='clear'></div><div class='post-desc'><p>"+data.post+"</p>"+
 						"</div> <div class='post-foot'> <p class='like liked'><i class='fa fa-heart'></i><span>255</span>Likes</p>"+
                            " <p><i class='fa fa-comment'> </i><span>02</span>Comments</p></div><div class='leave-comment'><h4>Leave Comment</h4>"+
-                           " <form method='post' action='#'><textarea placeholder='Write comment here'></textarea><button class='btn-all' style='margin:10px 0 0 0;'>Submit</button>"+
-                 " <form method='post' action='CommentController'><textarea name=\"myComment\" placeholder='Write comment here'></textarea><button class='btn-all'>Comment</button>"+
+                           " <form method='post' action='CommentController'><textarea name='myComment' placeholder='Write comment here'></textarea><input name='hid' type='hidden' value='"+data.postid+"' /><button class='btn-all' style='margin:10px 0 0 0;'>Submit</button>"+
 
                        " </form> </div>";
+			
+			
 			
 			postContent+= "<div class='comments-wrap'><div class='single-comment'><div class='img-holder'>  <img src='view/images/thumb/img.jpg' alt='img'> </div>"+
 							"<div class='text-holder'><h4>Navraj Bhattarai <span>August 25, 2014 at 9:30 PM</span></h4>"+
@@ -48,6 +49,30 @@ $(document).ready(function () {
 		console.log(exception);
 	}
 });
+	
+	
+	
+	
+	$.ajax({
+		url:'CommentController',
+		type:'GET',
+		headers:{
+			Accept:"application/json; charset=utf-8",
+			"Content-Type" : "application/json; charset=utf-8"
+		},
+		success:function(output){
+			console.log(output);
+			$.each(output.JSONDATA,function(i,data){
+				
+				postContent+="zoooooooooooooo";
+				$("#post").append(postContent);
+			});
+			},
+			error:function(exception){
+				console.log(exception);
+			}
+		});
+	
 	
 	
 	//  s global variable  assign
@@ -138,7 +163,7 @@ $("#post3").on('click', function() {
 				postContent+=" <div class='clear'></div><div class='post-desc'><p>"+data.post+"</p>"+
 							"</div> <div class='post-foot'> <p class='like liked'><i class='fa fa-heart'></i><span>255</span>Likes</p>"+
 	                           " <p><i class='fa fa-comment'> </i><span>02</span>Comments</p></div><div class='leave-comment'><h4>Leave Comment</h4>"+
-	                           " <form method='post' action='#'><textarea placeholder='Write comment here'></textarea><button class='btn-all' style='margin:10px 0 0 0;'>Submit</button>"+
+	                           " <form method='post' action='CommentController'><textarea name='myComment' placeholder='Write comment here'></textarea><button class='btn-all' style='margin:10px 0 0 0;'>Submit</button>"+
 	                       " </form> </div>";
 				
 				postContent+= "<div class='comments-wrap'><div class='single-comment'><div class='img-holder'>  <img src='view/images/thumb/img.jpg' alt='img'> </div>"+
@@ -158,34 +183,4 @@ $("#post3").on('click', function() {
 	});
 });
 
-
-
-
-$("#offering").on('click', function() { 
-	$.ajax({
-		url:'OfferingAsking',
-		type:'GET',
-		headers:{
-			Accept:"application/json; charset=utf-8",
-			"Content-Type" : "application/json; charset=utf-8"
-		},
-		success:function(result){
-			$("#ajaxoutput").html('');
-			$.each(result.JSONDATA,function(i,data){
-				console.log(result.JSONDATA);
-				console.log(data.fromlocation);
-				var myHTML="";
-				myHTML+="<div class='offeredPost'><h2 class='offererName'>"+"UserName: "+data.name+"</h2>";
-				myHTML+="<pre>"+data.post+"</pre>"+"<pre>"+data.fromlocation+"</pre>"+"<button class='btnLike' btn-postid=\""+data.postid+"\">Like</button>" +
-						"<input type='hidden' name='txtHidden' value='"+data.postid+"'>" +
-								"     "+"<button class='btnComment' btn-postid=\""+data.postid+"\">Comment</button></div>" +
-										"<br><br>";
-				$("#ajaxoutput").append(myHTML);
-				
-			});
-		},
-		error:function(exception){
-			console.log(exception);
-		}
-	});
-});
+/////////////////////////////////////////////

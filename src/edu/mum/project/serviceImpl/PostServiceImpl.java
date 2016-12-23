@@ -80,7 +80,19 @@ public class PostServiceImpl {
 		}
 		return tableCount;
 	}
+	
+	
+	
 
+	public ArrayList<String> viewMyPost(int userId) {
+		int postType = 1;
+		Connection con = (Connection) DBConnection.getConnection().prepareStatement("SELECT userid FROM users where email='" + userId + "'");
+		ResultSet rs = ps.executeQuery();
+		
+		return null;
+		
+	}
+	
 	
 	
 	
@@ -92,6 +104,7 @@ public class PostServiceImpl {
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				PostByUser userPost = new PostByUser();
+				LikeServiceImpl lsi= new LikeServiceImpl();
 
 				userPost.setPostid(Integer.parseInt(rs.getString("postid")));
 				userPost.setUserid(Integer.parseInt(rs.getString("userid")));
@@ -102,7 +115,7 @@ public class PostServiceImpl {
 				userPost.setName(rs.getString("fullname"));
 				userPost.setFromlocation(rs.getString("fromlocation"));
 				userPost.setTolocation(rs.getString("tolocation"));
-
+				
 				allPost.add(userPost);
 			}
 			return allPost;
@@ -121,7 +134,7 @@ public class PostServiceImpl {
 		ArrayList allPost = new ArrayList();
 		try {
 			PreparedStatement ps = (PreparedStatement) DBConnection.getConnection().prepareStatement(
-					"SELECT * FROM users u INNER JOIN posts p on u.userid=p.userid ORDER BY  p.dateupdated DESC LIMIT 25;");
+					"SELECT * FROM users u INNER JOIN posts p on u.userid=p.userid ORDER BY  p.dateupdated;");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				PostByUser userPost = new PostByUser();

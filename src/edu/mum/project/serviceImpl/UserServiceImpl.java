@@ -62,12 +62,13 @@ public class UserServiceImpl{
 		}
 		emailmd = sb.toString();
 		Connection con = (Connection) DBConnection.getConnection();
-		String query = "select email,password from users";
+		String query = "select email,password,city from users";
 		PreparedStatement stat = (PreparedStatement) con.prepareStatement(query);
 		ResultSet res = stat.executeQuery();
 		while (res.next()) {
 			String mail = res.getString("email").toString();
 			String pass = res.getString("password").toString();
+			
 			if (email.equals(mail) && pass.equals(emailmd)) {
 				return true;
 			}

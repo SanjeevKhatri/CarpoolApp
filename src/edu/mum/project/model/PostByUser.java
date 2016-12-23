@@ -7,6 +7,25 @@ public class PostByUser {
 	private String post;
 	private String fromlocation;
 	private String tolocation;
+	private int totalLikes;
+	private int likedonpostbyuser;
+
+	public int getLikedonpostbyuser() {
+		return likedonpostbyuser;
+	}
+
+	public void setLikedonpostbyuser(int likedonpostbyuser) {
+		this.likedonpostbyuser = likedonpostbyuser;
+	}
+
+	public int getTotalLikes() {
+		return totalLikes;
+	}
+
+	public void setTotalLikes(int totalLikes) {
+		this.totalLikes = totalLikes;
+	}
+
 	public String getFromlocation() {
 		return fromlocation;
 	}

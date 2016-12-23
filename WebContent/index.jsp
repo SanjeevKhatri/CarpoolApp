@@ -72,7 +72,7 @@
 
 			<div class="top_form pull-right">
 				<h1>Sign Up</h1>
-				<form method="POST" action="SignUpController">
+				<form id="configform" method="POST" action="SignUpController">
 					
 						<input type="text" name="fullname" placeholder="Full name"
 							required>
@@ -160,7 +160,7 @@ one number "
 					<div class="small_input right">
 
 
-						<select name="birthyear" class="form-control selectItem">
+						<select id="birthyear" name="birthyear" class="form-control selectItem">
 							<option value="">Birth Year</option>
 							<option value="2016">2016</option>
 							<option value="2015">2015</option>
@@ -283,12 +283,7 @@ one number "
 					</div>
 					<br class="clear">
 
-					<h5>
-						By clicking Sign Up, you agree to Carpool's <a
-							href="javascript:void(0)">User Agreement</a>, <a
-							href="javascript:void(0)">Privacy Policy</a> and <a
-							href="javascript:void(0)">Cookie Policy</a>.
-					</h5>
+					
 					<input type="submit" value="Sign Up">
 
 				</form>
@@ -337,6 +332,7 @@ one number "
 	<!-- jQuery -->
 	<script src="view/js/jquery.js"></script>
 	<script src="view/js/bootstrap.min.js"></script>
+	<script src="view/js/age.js"></script>
 
 
 

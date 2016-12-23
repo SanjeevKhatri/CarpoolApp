@@ -60,4 +60,39 @@ public class LikeServiceImpl {
 		System.out.println(allLikes.toString());
 		return allLikes;
 	}
+	
+	
+	
+	public int getNumberofLikesById(int postId) throws SQLException, Exception {
+		int lik=0;
+		PreparedStatement ps = (PreparedStatement) DBConnection.getConnection().prepareStatement(
+				"SELECT * FROM likes l INNER JOIN posts p on l.postid=p.postid WHERE p.postid=" + postId + ";");
+
+		ResultSet rs = ps.executeQuery();
+		while (rs.next()) {
+			lik++;
+		}
+
+		System.out.println(lik);
+		return lik;
+	}
+	
+	
+	public int isLikedByUser(int postId, int userId) throws SQLException, Exception {
+		int isliked=0;
+		PreparedStatement ps = (PreparedStatement) DBConnection.getConnection().prepareStatement(
+				"SELECT * FROM likes l INNER JOIN posts p on l.postid=p.postid INNER JOIN users u on l.userid=u.userid WHERE p.postid=" + postId +"AND u.userid="+ userId+ ";");
+	
+		ResultSet rs = ps.executeQuery();
+		while (rs.next()) {
+			isliked=1;
+		}
+		
+
+		System.out.println(isliked);
+		return isliked;
+	}
+	
+	
+	
 }
